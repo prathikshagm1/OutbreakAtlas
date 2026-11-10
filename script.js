@@ -382,7 +382,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 // Load historical malaria data
-fetch("data/historical_data.json")
+fetch("historical_data.json")
     .then(response => {
         if (!response.ok) {
             throw new Error("Could not load historical data");
