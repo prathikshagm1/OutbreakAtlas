@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>OutbreakAtlas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <h1>OutbreakAtlas</h1>
+    <p>Global Disease Outbreak Mointoring and Awareness Platform</p>
+    <h2>Latest Outbreak Reports</h2>
+    <div class="stats-container">
+        <h2>Total Reports</h2>
+        <p id="total-reports">Loading...</p>
+    </div>
+    <div class="summary-cards">
+        <div class="summary-card">
+            <h3>Total Reports</h3>
+            <p id="totalReports">0</p>
+        </div>
+        <div class="summary-card" id="countryCard">
+            <h3>Countries Affected</h3>
+            <p id="totalCountries">0</p>
+            <small>Click to view countries</small>
+        </div>
+        <div id="countryList" class="country-list"></div>
+        <div class="summary-card">
+            <h3>Latest Report Year</h3>
+            <p id="latestYear">0</p>
+        </div>
+    </div>
+    <div class="chart-container">
+        <h2>Reports Published by Month</h2>
+        <canvas id="monthlyChart"></canvas>
+    </div>
+    <div class="chart-container">
+        <h2>Outbreak Reports by Year</h2>
+        <canvas id="yearChart"></canvas>
+    </div>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by disease or country..."
+        >
+        <select id="countryFilter">
+            <option value="all">All Countries</option>
+            <option value="Uganda">Uganda</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Senegal">Senegal</option>
+            <option value="Congo">Congo</option>
+        </select>
+
+        <select id="diseaseFilter">
+            <option value="all">All Diseases</option>
+            <option value="Ebola">Ebola</option>
+            <option value="Mpox">Mpox</option>
+            <option value="Cholera">Cholera</option>
+            <option value="Dengue">Dengue</option>
+            <option value="Polio">Polio</option>
+            <option value="Marburg">Marburg</option>
+        </select>
+        <p 
+             id="selectedCountryLabel"
+             class="selected-country-label" 
+             style="display: none;"
+        ></p>
+        <button id="clearCountryFilter" class="clear-filter-btn">
+              Show All Reports
+        </button>
+        <div id="reports-container"></div>
+        <!-- INTERACTIVE WORLD MAP -->
+        <section class="map-section">
+            <h2>🌍 Global Outbreak Map</h2>
+            <p>Explore outbreak locations around the world.</p>
+            <div class="map-stats">
+               <div class="map-stat-card">
+                   <h3 id="mapCountries">0</h3>
+                   <p>Countries Affected</p>
+               </div>
+               <div class="map-stat-card">
+                   <h3 id="mapReports">0</h3>
+                   <p>Total WHO Reports</p>
+               </div>
+               <div class="map-stat-card">
+                   <h3 id="mapMarkers">0</h3>
+                  <p>Map Markers</p>
+               </div>
+            </div>
+            <div id="outbreakMap"></div>
+            <div class="map-legend">
+                <h3>Map Legend</h3>
+                <p><span class="legend-dot green"></span> 1–2 WHO Reports</p>
+                <p><span class="legend-dot orange"></span> 3–5 WHO Reports</p>
+                <p><span class="legend-dot red"></span> 6 or more WHO Reports</p>
+                <p><span class="legend-dot gray"></span> No Reports</p>
+            </div>
+        </section>
+         <!-- Report Details Modal -->
+        <div id="reportModal" class="modal">f
+            <div class="modal-content">
+                <span id="closeModal" class="close">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDate"></p>
+                <p id="modalSummary"></p>
+                <a 
+                    id="modalLink" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                >
+                    Read Full WHO Report
+                </a>
+            </div>
+        </div>
+        <!-- External Libraries -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <!-- Historical Malaria Insights -->
+        <section id="historicalSection" class="historical-section">
+            <h2>📊 Historical Malaria Insights</h2>
+            <div class="country-analysis">
+               <h3>🌍 Country-wise Historical Analysis</h3>
+               <label for="countrySelect">Select a Country:</label>
+               <select id="countrySelect">
+                   <option value="">Choose a country</option>
+                </select>
+            </div>
+            <!-- Country-wise results -->
+            <div id="countryResults" class="country-results">
+                <p>Select a country to view its historical malaria data.</p>
+            </div>
+            <div class="historical-chart">
+                 <h3>Country-wise Malaria Trends</h3>
+                 <canvas id="countryTrendChart"></canvas>
+            </div>
+            <div class="historical-chart">
+                 <h3>Country-wise Malaria Incidence Trends</h3>
+                 <canvas id="countryIncidenceChart"></canvas>
+            </div>
+            <p>
+                 Explore historical malaria cases, deaths,
+                 estimates and incidencelllll trends.
+            </p>
+            <div class="historical-stats">
+                <div class="stat-card">
+                     <h3>Total Reported Cases</h3>
+                     <p id="historicalCases">Loading...</p>
+                </div>
+                <div class="stat-card">
+                     <h3>Total Reported Deaths</h3>
+                     <p id="historicalDeaths">Loading...</p>
+                </div>
+            </div>
+            <div class="historical-chart">
+                <h3>Year-wise Malaria Cases</h3>
+                <canvas id="historicalCasesChart"></canvas>
+            </div>
+            <div class="historical-chart">
+                <h3>Year-wise Malaria Deaths</h3>
+                <canvas id="historicalDeathsChart"></canvas>
+            </div>
+            <div class="historical-chart">
+                <h3>Top 10 Countries by Reported Malaria Cases</h3>
+                <canvas id="topCountriesChart"></canvas>
+            </div>
+            <div class="historical-chart">
+                <h3>Average Malaria Incidence by Year</h3>
+                <canvas id="incidenceChart"></canvas>
+            </div>
+        </section>
+        <script src="script.js"></script>
+        <!-- Website Footer -->
+        <footer class="site-footer">
+            <p>
+                Data Source:
+                <a 
+                   href="https://www.who.int/emergencies/disease-outbreak-news/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                   World Health Organization (WHO)
+                </a>
+            </p>
+            <p>
+                Disclaimer: This platform is for educational and awareness
+                purposes only. Reports shown here do not represent all
+                disease outbreaks worldwide and are not medical advice.
+            </p>
+        </footer>
+</body>
+</html>
