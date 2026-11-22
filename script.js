@@ -580,7 +580,6 @@ countries.forEach(country => {
                     }
                 }
             });
-           }
             // Country-wise incidence chart
             const incidenceYears = incidenceData.map(item => item.Year);
             const incidenceValues = incidenceData.map(
