@@ -419,15 +419,48 @@ fetch("historical_data.json")
     .then(data => {
         // Populate country dropdown
         const countrySelect = document.getElementById("countrySelect");
-        const countries = [
-            ...new Set(data.countries.reported.map(item => item.Country))
-        ].sort();
-        countries.forEach(country => {
-            const option = document.createElement("option");
-            option.value = country;
-            option.textContent = country;
-            countrySelect.appendChild(option);
-        });
+const countryCards = document.getElementById("countryCards");
+
+const countries = [
+    ...new Set(data.countries.reported.map(item => item.Country))
+].sort();
+
+const countryFlags = {
+    "India": "🇮🇳",
+    "Brazil": "🇧🇷",
+    "Nigeria": "🇳🇬",
+    "Kenya": "🇰🇪",
+    "Uganda": "🇺🇬",
+    "Tanzania": "🇹🇿",
+    "Democratic Republic of the Congo": "🇨🇩",
+    "DR Congo": "🇨🇩",
+    "Mozambique": "🇲🇿",
+    "Ghana": "🇬🇭",
+    "Ethiopia": "🇪🇹",
+    "Pakistan": "🇵🇰",
+    "Bangladesh": "🇧🇩"
+};
+
+countries.forEach(country => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    countrySelect.appendChild(option);
+
+    const card = document.createElement("button");
+    card.className = "country-card";
+    card.innerHTML = `
+        <span class="country-flag">${countryFlags[country] || "🌍"}</span>
+        <span>${country}</span>
+    `;
+
+    card.addEventListener("click", () => {
+        countrySelect.value = country;
+        countrySelect.dispatchEvent(new Event("change"));
+    });
+
+    countryCards.appendChild(card);
+});
         // Display selected country's historical statistics
         countrySelect.addEventListener("change", function () {
             const selectedCountry = this.value;
