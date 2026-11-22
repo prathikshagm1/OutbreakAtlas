@@ -154,19 +154,34 @@ container.appendChild(card);
         let selectedMarker = null;
         let markerCount = 0;
         const countryFlags = {
-    "India": "🇮🇳",
-    "Brazil": "🇧🇷",
-    "Nigeria": "🇳🇬",
-    "Kenya": "🇰🇪",
     "Uganda": "🇺🇬",
-    "Tanzania": "🇹🇿",
+    "Indonesia": "🇮🇩",
     "Democratic Republic of the Congo": "🇨🇩",
-    "DR Congo": "🇨🇩",
-    "Mozambique": "🇲🇿",
-    "Ghana": "🇬🇭",
-    "Ethiopia": "🇪🇹",
+    "China": "🇨🇳",
+    "Cambodia": "🇰🇭",
+    "Nepal": "🇳🇵",
+    "Saudi Arabia": "🇸🇦",
     "Pakistan": "🇵🇰",
-    "Bangladesh": "🇧🇩"
+    "Gabon": "🇬🇦",
+    "Comoros": "🇰🇲",
+    "Burundi": "🇧🇮",
+    "Malawi": "🇲🇼",
+    "France": "🇫🇷",
+    "United Kingdom": "🇬🇧",
+    "Oman": "🇴🇲",
+    "Netherlands": "🇳🇱",
+    "Canada": "🇨🇦",
+    "Iraq": "🇮🇶",
+    "Senegal": "🇸🇳",
+    "Peru": "🇵🇪",
+    "South Korea": "🇰🇷",
+    "United States": "🇺🇸",
+    "Syria": "🇸🇾",
+    "Israel": "🇮🇱",
+    "Republic of the Congo": "🇨🇬",
+    "Egypt": "🇪🇬",
+    "Angola": "🇦🇴",
+    "Vietnam": "🇻🇳"
 };
 countries.forEach(country => {
     const coordinates = countryCoordinates[country];
