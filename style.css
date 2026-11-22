@@ -782,3 +782,12 @@ button {
         grid-template-columns: 1fr;
     }
 }
+/* Hide countries until the card is clicked */
+#countryList:not(.show) {
+    display: none !important;
+}
+
+/* Show countries when the card is clicked */
+#countryList.show {
+    display: grid !important;
+}
