@@ -577,7 +577,15 @@ button {
     #outbreakMap {
         height: 350px;
     }
+.overview-charts .chart-container {
+    height: 350px;
+    position: relative;
+}
 
+.overview-charts .chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
     .main-content {
         padding-left: 15px;
         padding-right: 15px;
