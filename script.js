@@ -373,16 +373,20 @@ container.appendChild(card);
         console.log("Error fetching reports:", error);
     });
 // CLOSE REPORT POPUP
+
 const reportModal = document.getElementById("reportModal");
 const closeModal = document.getElementById("closeModal");
+
 closeModal.addEventListener("click", () => {
     reportModal.style.display = "none";
 });
+
 reportModal.addEventListener("click", (event) => {
     if (event.target === reportModal) {
         reportModal.style.display = "none";
     }
 });
+
 // INTERACTIVE WORLD MAP
 const map = L.map("outbreakMap").setView([20, 0], 2);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
