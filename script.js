@@ -392,11 +392,19 @@ reportModal.addEventListener("click", (event) => {
 
 // INTERACTIVE WORLD MAP
 const map = L.map("outbreakMap", {
-    worldCopyJump: true
+    worldCopyJump: false,
+    maxBounds: [
+        [-90, -180],
+        [90, 180]
+    ],
+    maxBoundsViscosity: 1
 }).setView([20, 0], 2);
+
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; OpenStreetMap contributors'
+    attribution: '&copy; OpenStreetMap contributors',
+    noWrap: true
 }).addTo(map);
+
 setTimeout(() => {
     map.invalidateSize();
 }, 300);
