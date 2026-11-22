@@ -245,32 +245,42 @@ countries.forEach(country => {
         });
         document.getElementById("mapMarkers").textContent = markerCount;
         // SHOW COUNTRIES WHEN CARD IS CLICKED
-        // SHOW COUNTRIES WHEN CARD IS CLICKED
 const countryCard = document.getElementById("countryCard");
 const countryList = document.getElementById("countryList");
 
+countryList.hidden = true;
+
 countryCard.addEventListener("click", () => {
-    countryList.innerHTML = "";
 
-    countries.forEach(country => {
-        const item = document.createElement("div");
-        item.className = "country-item";
+    if (countryList.hidden) {
+        countryList.innerHTML = "";
 
-        const flagCode = countryFlags[country];
+        countries.forEach(country => {
+            const item = document.createElement("div");
+            item.className = "country-item";
 
-        item.innerHTML = `
-            <img
-                src="https://flagcdn.com/w40/${flagCode}.png"
-                class="country-icon"
-                alt="${country} flag"
-            >
-            <span>${country}</span>
-        `;
+            const flagCode = countryFlags[country];
 
-        countryList.appendChild(item);
-    });
+            item.innerHTML = `
+                <img
+                    src="https://flagcdn.com/w40/${flagCode}.png"
+                    class="country-icon"
+                    alt="${country} flag"
+                >
+                <span>${country}</span>
+            `;
 
-    countryList.classList.toggle("show");
+            countryList.appendChild(item);
+        });
+
+        countryList.hidden = false;
+        countryList.classList.add("show");
+
+    } else {
+        countryList.hidden = true;
+        countryList.classList.remove("show");
+    }
+
 });
         // 2. Latest Report Year
         const years = reports
