@@ -293,17 +293,27 @@
 </div>
 
 <!-- Report details modal -->
-<div id="reportModal" class="modal">
+
+<div id="reportModal" class="report-modal">
     <div class="modal-content">
-        <span id="closeModal" class="close">&times;</span>
-        <h2 id="modalTitle"></h2>
+        <button id="closeModal" class="close-modal">&times;</button>
+
+        <span class="report-label">WHO OUTBREAK REPORT</span>
+
+        <h2 id="modalTitle">Report Title</h2>
+
         <p id="modalDate"></p>
-        <p id="modalSummary"></p>
-        <a id="modalLink" target="_blank" rel="noopener noreferrer">
-            Read Full WHO Report
+
+        <div id="modalSummary">
+            Report summary will appear here.
+        </div>
+
+        <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer">
+            Read Full WHO Report →
         </a>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
