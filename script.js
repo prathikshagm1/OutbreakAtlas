@@ -154,34 +154,34 @@ container.appendChild(card);
         let selectedMarker = null;
         let markerCount = 0;
         const countryFlags = {
-    "Uganda": "🇺🇬",
-    "Indonesia": "🇮🇩",
-    "Democratic Republic of the Congo": "🇨🇩",
-    "China": "🇨🇳",
-    "Cambodia": "🇰🇭",
-    "Nepal": "🇳🇵",
-    "Saudi Arabia": "🇸🇦",
-    "Pakistan": "🇵🇰",
-    "Gabon": "🇬🇦",
-    "Comoros": "🇰🇲",
-    "Burundi": "🇧🇮",
-    "Malawi": "🇲🇼",
-    "France": "🇫🇷",
-    "United Kingdom": "🇬🇧",
-    "Oman": "🇴🇲",
-    "Netherlands": "🇳🇱",
-    "Canada": "🇨🇦",
-    "Iraq": "🇮🇶",
-    "Senegal": "🇸🇳",
-    "Peru": "🇵🇪",
-    "South Korea": "🇰🇷",
-    "United States": "🇺🇸",
-    "Syria": "🇸🇾",
-    "Israel": "🇮🇱",
-    "Republic of the Congo": "🇨🇬",
-    "Egypt": "🇪🇬",
-    "Angola": "🇦🇴",
-    "Vietnam": "🇻🇳"
+    "Uganda": "ug",
+    "Indonesia": "id",
+    "Democratic Republic of the Congo": "cd",
+    "China": "cn",
+    "Cambodia": "kh",
+    "Nepal": "np",
+    "Saudi Arabia": "sa",
+    "Pakistan": "pk",
+    "Gabon": "ga",
+    "Comoros": "km",
+    "Burundi": "bi",
+    "Malawi": "mw",
+    "France": "fr",
+    "United Kingdom": "gb",
+    "Oman": "om",
+    "Netherlands": "nl",
+    "Canada": "ca",
+    "Iraq": "iq",
+    "Senegal": "sn",
+    "Peru": "pe",
+    "South Korea": "kr",
+    "United States": "us",
+    "Syria": "sy",
+    "Israel": "il",
+    "Republic of the Congo": "cg",
+    "Egypt": "eg",
+    "Angola": "ao",
+    "Vietnam": "vn"
 };
 countries.forEach(country => {
     const coordinates = countryCoordinates[country];
@@ -253,7 +253,11 @@ countries.forEach(country => {
                 const item = document.createElement("div");
                 item.className = "country-item";
                 item.innerHTML = `
-                    <span class="country-icon">${countryFlags[country] || "🌍"}</span>
+                    <img
+                        src="https://flagcdn.com/w40/${countryFlags[country]}.png"
+                        class="country-icon"
+                        alt="${country} flag"
+                    >
                     <span>${country}</span>
                 `;
                 countryList.appendChild(item);
