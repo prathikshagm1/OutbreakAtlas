@@ -153,7 +153,28 @@ container.appendChild(card);
         };
         let selectedMarker = null;
         let markerCount = 0;
-        countries.forEach(country => {
+        const countryFlags = {
+    "India": "🇮🇳",
+    "Brazil": "🇧🇷",
+    "Nigeria": "🇳🇬",
+    "Kenya": "🇰🇪",
+    "Uganda": "🇺🇬",
+    "Tanzania": "🇹🇿",
+    "Democratic Republic of the Congo": "🇨🇩",
+    "DR Congo": "🇨🇩",
+    "Mozambique": "🇲🇿",
+    "Ghana": "🇬🇭",
+    "Ethiopia": "🇪🇹",
+    "Pakistan": "🇵🇰",
+    "Bangladesh": "🇧🇩"
+};
+
+countries.forEach(country => {
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = `${countryFlags[country] || "🌍"} ${country}`;
+    countrySelect.appendChild(option);
+});
             const coordinates = countryCoordinates[country];
             if (coordinates) {
                 markerCount++;
