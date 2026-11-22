@@ -614,10 +614,11 @@ button {
     transform: scale(0.97);
 }
 .read-report-btn {
-    background: transparent;
-    color: #45d6c8;
-    border: 1px solid #45d6c8;
-    padding: 9px 18px;
+    display: inline-block;
+    background: linear-gradient(135deg, #35c6b0, #397be8);
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
@@ -626,10 +627,8 @@ button {
 }
 
 .read-report-btn:hover {
-    background: #45d6c8;
-    color: #171824;
-    box-shadow: 0 4px 14px rgba(69, 214, 200, 0.25);
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(53, 198, 176, 0.3);
 }
 
 .read-report-btn:active {
