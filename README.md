@@ -4,6 +4,14 @@
 
 OutbreakAtlas is a web-based disease surveillance dashboard designed to help users explore global disease outbreak reports and understand historical malaria trends through interactive visualisations.
 
+## 🌐 Live Website
+
+**Explore OutbreakAtlas here:**
+
+https://prathikshagm1.github.io/OutbreakAtlas/
+
+[![Open Website](https://img.shields.io/badge/Visit-Live%20Website-brightgreen)](https://prathikshagm1.github.io/OutbreakAtlas/)
+
 ## 🎯 Problem Statement
 
 Accessing and understanding disease outbreak information can be difficult when reports and historical statistics are scattered across different sources. OutbreakAtlas brings live outbreak reports and historical malaria data together in one accessible dashboard.
