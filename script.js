@@ -418,9 +418,7 @@ fetch("historical_data.json")
     })
     .then(data => {
         // Populate country dropdown
-        const countrySelect = document.getElementById("countrySelect");
 const countryCards = document.getElementById("countryCards");
-
 const countries = [
     ...new Set(data.countries.reported.map(item => item.Country))
 ].sort();
@@ -442,28 +440,19 @@ const countryFlags = {
 };
 
 countries.forEach(country => {
-    const option = document.createElement("option");
-    option.value = country;
-    option.textContent = country;
-    countrySelect.appendChild(option);
-
     const card = document.createElement("button");
     card.className = "country-card";
     card.innerHTML = `
         <span class="country-flag">${countryFlags[country] || "🌍"}</span>
         <span>${country}</span>
     `;
-
-    card.addEventListener("click", () => {
-        countrySelect.value = country;
-        countrySelect.dispatchEvent(new Event("change"));
-    });
-
+card.addEventListener("click", () => {
+    showCountryData(country);
+});
     countryCards.appendChild(card);
 });
         // Display selected country's historical statistics
-        countrySelect.addEventListener("change", function () {
-            const selectedCountry = this.value;
+           function showCountryData(selectedCountry) {
             const results = document.getElementById("countryResults");
             if (!selectedCountry) {
                 results.innerHTML = "<p>Select a country to view its historical malaria data.</p>";
@@ -641,7 +630,7 @@ countries.forEach(country => {
                     }
                 }
             });
-        });
+        }
         // Display total reported cases
         document.getElementById("historicalCases").textContent =
             data.reported.total_cases.toLocaleString();
