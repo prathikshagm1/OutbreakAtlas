@@ -168,10 +168,8 @@ container.appendChild(card);
     "Pakistan": "🇵🇰",
     "Bangladesh": "🇧🇩"
 };
-
 countries.forEach(country => {
-});
-            const coordinates = countryCoordinates[country];
+    const coordinates = countryCoordinates[country];
             if (coordinates) {
                 markerCount++;
                 const reportCount = reports.filter(report =>
