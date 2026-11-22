@@ -23,19 +23,20 @@ fetch(apiURL)
                 const card = document.createElement("div");
                 card.className = "report-card";
                 card.style.cursor = "pointer";
-                card.addEventListener("click", () => {
-                    document.getElementById("reportModal").style.display = "flex";
-                    document.getElementById("modalTitle").textContent = report.Title;
-                    document.getElementById("modalDate").textContent =
-                        "Publication Date: " +
-                        (report.PublicationDate
-                            ? new Date(report.PublicationDate).toLocaleDateString("en-GB")
-                            : "Not available");
-                    document.getElementById("modalSummary").innerHTML =
-                        report.Summary || report.Overview || "No summary available.";
-                    document.getElementById("modalLink").href =
-                        `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`;
-                });
+               card.addEventListener("click", (event) => {
+    if (event.target.closest(".read-report-btn")) return;
+    document.getElementById("reportModal").style.display = "flex";
+    document.getElementById("modalTitle").textContent = report.Title;
+    document.getElementById("modalDate").textContent =
+        "Publication Date: " +
+        (report.PublicationDate
+            ? new Date(report.PublicationDate).toLocaleDateString("en-GB")
+            : "Not available");
+    document.getElementById("modalSummary").innerHTML =
+        report.Summary || report.Overview || "No summary available.";
+    document.getElementById("modalLink").href =
+        `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`;
+});
                 card.innerHTML = `
                     <h3>${report.Title}</h3>
                     <span class="report-label">WHO REPORT</span>
