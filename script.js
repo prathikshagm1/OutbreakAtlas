@@ -42,17 +42,22 @@ card.innerHTML = `
 card.addEventListener("click", (event) => {
     if (event.target.closest(".read-report-btn")) return;
 
-    document.getElementById("reportModal").style.display = "flex";
-    document.getElementById("modalTitle").textContent = report.Title;
+    document.getElementById("modalTitle").textContent =
+        report.Title || "Outbreak Report";
+
     document.getElementById("modalDate").textContent =
         "Publication Date: " +
         (report.PublicationDate
             ? new Date(report.PublicationDate).toLocaleDateString("en-GB")
             : "Not available");
+
     document.getElementById("modalSummary").textContent =
         report.Summary || report.Overview || "No summary available.";
+
     document.getElementById("modalLink").href =
         `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`;
+
+    document.getElementById("reportModal").style.display = "flex";
 });
 
 card.querySelector(".read-report-btn").addEventListener("click", (event) => {
