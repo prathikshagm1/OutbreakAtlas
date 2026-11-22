@@ -290,6 +290,7 @@ fetch(apiURL)
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                resizeDelay: 200
                 layout: {
                     padding: {
                         bottom: 20,
@@ -329,7 +330,8 @@ fetch(apiURL)
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                resizeDelay: 200
             }
         });
         const searchInput = document.getElementById("searchInput");
