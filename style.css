@@ -731,41 +731,54 @@ button {
     border-radius: 3px;
     vertical-align: middle;
 }
-/* Country boxes */
+/* Countries Affected - Box Layout */
 #countryList.show {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
     padding: 20px;
 }
 
-.country-item {
+#countryList .country-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px;
-    background: rgba(45, 60, 78, 0.7);
-    border: 1px solid rgba(69, 214, 200, 0.25);
-    border-radius: 10px;
-    transition: 0.3s;
+    gap: 12px;
+    padding: 16px;
+    background: #252b3b;
+    border: 1px solid rgba(69, 214, 200, 0.3);
+    border-radius: 12px;
+    min-height: 55px;
+    transition: 0.3s ease;
 }
 
-.country-item:hover {
-    background: rgba(32, 201, 195, 0.15);
-    border-color: #20c9c3;
-    transform: translateY(-2px);
+#countryList .country-item:hover {
+    background: #303c4d;
+    border-color: #45d6c8;
+    transform: translateY(-3px);
 }
 
-.country-icon {
-    width: 26px;
-    height: 18px;
+#countryList .country-icon {
+    width: 30px;
+    height: 21px;
     object-fit: cover;
     border-radius: 3px;
     flex-shrink: 0;
 }
 
-@media (max-width: 700px) {
+#countryList .country-item span {
+    color: white;
+    font-size: 14px;
+}
+
+@media (max-width: 900px) {
     #countryList.show {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    #countryList.show {
+        grid-template-columns: 1fr;
     }
 }
