@@ -170,10 +170,6 @@ container.appendChild(card);
 };
 
 countries.forEach(country => {
-    const option = document.createElement("option");
-    option.value = country;
-    option.textContent = `${countryFlags[country] || "🌍"} ${country}`;
-    countrySelect.appendChild(option);
 });
             const coordinates = countryCoordinates[country];
             if (coordinates) {
@@ -244,7 +240,7 @@ countries.forEach(country => {
                 const item = document.createElement("div");
                 item.className = "country-item";
                 item.innerHTML = `
-                    <span class="country-icon">🌍</span>
+                    <span class="country-icon">${countryFlags[country] || "🌍"}</span>
                     <span>${country}</span>
                 `;
                 countryList.appendChild(item);
@@ -438,19 +434,44 @@ fetch("historical_data.json")
         return response.json();
     })
     .then(data => {
-        // Populate country dropdown
          // Populate country dropdown
-const countrySelect = document.getElementById("countrySelect");
+// Create country selection cards
+const countryCards = document.getElementById("countryCards");
 
 const countries = [
     ...new Set(data.countries.reported.map(item => item.Country))
 ].sort();
 
+const countryFlags = {
+    "India": "🇮🇳",
+    "Brazil": "🇧🇷",
+    "Nigeria": "🇳🇬",
+    "Kenya": "🇰🇪",
+    "Uganda": "🇺🇬",
+    "Tanzania": "🇹🇿",
+    "Democratic Republic of the Congo": "🇨🇩",
+    "Mozambique": "🇲🇿",
+    "Ghana": "🇬🇭",
+    "Ethiopia": "🇪🇹",
+    "Pakistan": "🇵🇰",
+    "Bangladesh": "🇧🇩"
+};
+
 countries.forEach(country => {
-    const option = document.createElement("option");
-    option.value = country;
-    option.textContent = country;
-    countrySelect.appendChild(option);
+    const card = document.createElement("button");
+    card.type = "button";
+    card.className = "country-card";
+
+    card.innerHTML = `
+        <span class="country-flag">${countryFlags[country] || "🌍"}</span>
+        <span>${country}</span>
+    `;
+
+    card.addEventListener("click", () => {
+        showCountryData(country);
+    });
+
+    countryCards.appendChild(card);
 });
         // Display selected country's historical statistics
            function showCountryData(selectedCountry) {
@@ -632,9 +653,6 @@ countries.forEach(country => {
                 }
             });
         }
-        countrySelect.addEventListener("change", function () {
-            showCountryData(this.value);
-        });
         // Display total reported cases
         document.getElementById("historicalCases").textContent =
             data.reported.total_cases.toLocaleString();
