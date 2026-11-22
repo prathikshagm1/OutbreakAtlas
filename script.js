@@ -39,9 +39,7 @@ card.innerHTML = `
     </button>
 `;
 
-card.addEventListener("click", (event) => {
-    if (event.target.closest(".read-report-btn")) return;
-
+card.addEventListener("click", () => {
     document.getElementById("modalTitle").textContent =
         report.Title || "Outbreak Report";
 
@@ -60,12 +58,14 @@ card.addEventListener("click", (event) => {
     document.getElementById("reportModal").style.display = "flex";
 });
 
+document.getElementById("modalLink").onclick = function(event) {
+    event.stopPropagation();
+};
+
 card.querySelector(".read-report-btn").addEventListener("click", (event) => {
     event.stopPropagation();
-    window.location.href =
-        `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`;
+     document.getElementById("modalLink").click();
 });
-
 container.appendChild(card);
             });
         }
