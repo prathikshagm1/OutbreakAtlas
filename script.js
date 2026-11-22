@@ -391,10 +391,15 @@ reportModal.addEventListener("click", (event) => {
 });
 
 // INTERACTIVE WORLD MAP
-const map = L.map("outbreakMap").setView([20, 0], 2);
+const map = L.map("outbreakMap", {
+    worldCopyJump: true
+}).setView([20, 0], 2);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
+setTimeout(() => {
+    map.invalidateSize();
+}, 300);
 // Load historical malaria data
 fetch("historical_data.json")
     .then(response => {
