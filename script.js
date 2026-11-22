@@ -57,12 +57,12 @@ fetch(apiURL)
                 `;
                 const reportButton = card.querySelector(".read-report-btn");
                 reportButton.addEventListener("click", (event) => {
-                     event.stopPropagation();
-                     window.open(
-                        `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`,
-                        "_blank"
-                     );
-                });
+                    event.stopPropagation();
+                    const reportURL = report.DonId
+                        ? `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`
+                        : "https://www.who.int/emergencies/disease-outbreak-news";
+                    window.location.href = reportURL;
+                 });
                 container.appendChild(card);
             });
         }
