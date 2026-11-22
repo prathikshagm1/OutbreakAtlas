@@ -591,3 +591,20 @@ button {
         padding-right: 15px;
     }
 }
+#clearCountryFilter {
+    background: #292a3a;
+    color: #45d6c8;
+    border: 1px solid #45d6c8;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#clearCountryFilter:hover {
+    background: #45d6c8;
+    color: #171824;
+    box-shadow: 0 0 12px rgba(69, 214, 200, 0.3);
+}
