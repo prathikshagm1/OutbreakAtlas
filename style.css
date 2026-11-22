@@ -691,4 +691,35 @@ button {
 #reportModal .close-modal:hover {
     color: #45d6c8;
 }
+/* Country Selection Cards */
+.country-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
 
+.country-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: #14283a;
+    border: 1px solid #29465c;
+    border-radius: 12px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+.country-card:hover {
+    background: #1b3b50;
+    border-color: #16a085;
+    transform: translateY(-3px);
+}
+
+.country-flag {
+    font-size: 27px;
+}
