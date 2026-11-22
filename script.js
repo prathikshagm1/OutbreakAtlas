@@ -20,11 +20,28 @@ fetch(apiURL)
                 return;
             }
             reportList.slice(0, 10).forEach(report => {
-                const card = document.createElement("div");
-                card.className = "report-card";
-                card.style.cursor = "pointer";
-               card.addEventListener("click", (event) => {
+               const card = document.createElement("div");
+card.className = "report-card";
+card.style.cursor = "pointer";
+
+card.innerHTML = `
+    <h3>${report.Title}</h3>
+    <span class="report-label">WHO REPORT</span>
+    <p>Publication Date: ${
+        report.PublicationDate
+            ? new Date(report.PublicationDate).toLocaleDateString("en-GB")
+            : "Not available"
+    }</p>
+    <p>${String(report.Summary || report.Overview || "No summary available.")
+        .replace(/<a\b[^>]*>(.*?)<\/a>/gi, "$1")}</p>
+    <button class="read-report-btn" type="button">
+        Read Official Report
+    </button>
+`;
+
+card.addEventListener("click", (event) => {
     if (event.target.closest(".read-report-btn")) return;
+
     document.getElementById("reportModal").style.display = "flex";
     document.getElementById("modalTitle").textContent = report.Title;
     document.getElementById("modalDate").textContent =
@@ -32,38 +49,19 @@ fetch(apiURL)
         (report.PublicationDate
             ? new Date(report.PublicationDate).toLocaleDateString("en-GB")
             : "Not available");
-    document.getElementById("modalSummary").innerHTML =
+    document.getElementById("modalSummary").textContent =
         report.Summary || report.Overview || "No summary available.";
     document.getElementById("modalLink").href =
         `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`;
 });
-                card.innerHTML = `
-                    <h3>${report.Title}</h3>
-                    <span class="report-label">WHO REPORT</span>
-                    <p>Publication Date: ${
-                        report.PublicationDate
-                            ? new Date(report.PublicationDate).toLocaleDateString("en-GB", {
-                                day: "numeric",
-                                month: "long",
-                                year: "numeric"
-                            })
-                            : "Not available"
-                    }</p>
-                    <p>${String(report.Summary || report.Overview || "No summary available.")
-                        .replace(/<a\b[^>]*>(.*?)<\/a>/gi, "$1")}</p>
-                    <button class="read-report-btn" type="button">
-                        Read Official Report
-                    </button>
-                `;
-                const reportButton = card.querySelector(".read-report-btn");
-                reportButton.addEventListener("click", (event) => {
-                    event.stopPropagation();
-                    const reportURL = report.DonId
-                        ? `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`
-                        : "https://www.who.int/emergencies/disease-outbreak-news";
-                    window.location.href = reportURL;
-                 });
-                container.appendChild(card);
+
+card.querySelector(".read-report-btn").addEventListener("click", (event) => {
+    event.stopPropagation();
+    window.location.href =
+        `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`;
+});
+
+container.appendChild(card);
             });
         }
         const clearButton = document.getElementById("clearCountryFilter");
