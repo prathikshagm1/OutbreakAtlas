@@ -591,4 +591,25 @@ button {
         padding-right: 15px;
     }
 }
+#clearCountryFilter {
+    background: linear-gradient(135deg, #35c6b0, #397be8);
+    color: #ffffff;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(53, 198, 176, 0.2);
+    transition: all 0.3s ease;
+}
 
+#clearCountryFilter:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(53, 198, 176, 0.35);
+}
+
+#clearCountryFilter:active {
+    transform: scale(0.97);
+}
