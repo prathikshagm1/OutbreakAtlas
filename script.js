@@ -1,4 +1,3 @@
-
 const apiURL = "https://www.who.int/api/hubs/diseaseoutbreaknews";
 fetch(apiURL)
     .then(response => response.json())
@@ -7,7 +6,6 @@ fetch(apiURL)
             new Date(b.PublicationDate) - new Date(a.PublicationDate)
         );
         document.getElementById("mapReports").textContent = reports.length;
-        document.getElementById("total-reports").textContent = reports.length;
         const container = document.getElementById("reports-container");
         function displayReports(reportList) {
             container.innerHTML = "";
