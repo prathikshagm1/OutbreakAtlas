@@ -55,6 +55,14 @@ fetch(apiURL)
                         Read Official Report
                     </button>
                 `;
+                const reportButton = card.querySelector(".read-report-btn");
+                reportButton.addEventListener("click", (event) => {
+                     event.stopPropagation();
+                     window.open(
+                        `https://www.who.int/emergencies/disease-outbreak-news/item/${report.DonId}`,
+                        "_blank"
+                     );
+                });
                 container.appendChild(card);
             });
         }
