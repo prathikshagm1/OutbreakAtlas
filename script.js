@@ -418,38 +418,18 @@ fetch("historical_data.json")
     })
     .then(data => {
         // Populate country dropdown
-const countryCards = document.getElementById("countryCards");
+         // Populate country dropdown
+const countrySelect = document.getElementById("countrySelect");
+
 const countries = [
     ...new Set(data.countries.reported.map(item => item.Country))
 ].sort();
 
-const countryFlags = {
-    "India": "🇮🇳",
-    "Brazil": "🇧🇷",
-    "Nigeria": "🇳🇬",
-    "Kenya": "🇰🇪",
-    "Uganda": "🇺🇬",
-    "Tanzania": "🇹🇿",
-    "Democratic Republic of the Congo": "🇨🇩",
-    "DR Congo": "🇨🇩",
-    "Mozambique": "🇲🇿",
-    "Ghana": "🇬🇭",
-    "Ethiopia": "🇪🇹",
-    "Pakistan": "🇵🇰",
-    "Bangladesh": "🇧🇩"
-};
-
 countries.forEach(country => {
-    const card = document.createElement("button");
-    card.className = "country-card";
-    card.innerHTML = `
-        <span class="country-flag">${countryFlags[country] || "🌍"}</span>
-        <span>${country}</span>
-    `;
-card.addEventListener("click", () => {
-    showCountryData(country);
-});
-    countryCards.appendChild(card);
+    const option = document.createElement("option");
+    option.value = country;
+    option.textContent = country;
+    countrySelect.appendChild(option);
 });
         // Display selected country's historical statistics
            function showCountryData(selectedCountry) {
@@ -631,6 +611,9 @@ card.addEventListener("click", () => {
                 }
             });
         }
+        countrySelect.addEventListener("change", function () {
+            showCountryData(this.value);
+        });
         // Display total reported cases
         document.getElementById("historicalCases").textContent =
             data.reported.total_cases.toLocaleString();
