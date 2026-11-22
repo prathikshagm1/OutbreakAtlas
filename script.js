@@ -496,6 +496,11 @@ fetch("historical_data.json")
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                           bottom: 30
+                        }
+                    },
                     plugins: {
                         legend: {
                             labels: {
@@ -559,6 +564,11 @@ fetch("historical_data.json")
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                           bottom: 30
+                        }
+                     },
                     plugins: {
                         legend: {
                             labels: {
@@ -630,6 +640,11 @@ fetch("historical_data.json")
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        bottom: 30
+                     }
+                },
                 plugins: {
                     legend: {
                         labels: {
@@ -691,6 +706,11 @@ fetch("historical_data.json")
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        bottom: 30
+                    }
+                },
                 plugins: {
                     legend: {
                         labels: {
@@ -747,6 +767,11 @@ fetch("historical_data.json")
                 indexAxis: "y",
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                     padding: {
+                         bottom: 30
+                     }
+                },
                 plugins: {
                     legend: {
                         labels: {
@@ -797,6 +822,11 @@ fetch("historical_data.json")
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        bottom: 30
+                    }
+                },
                 plugins: {
                     legend: {
                         labels: {
