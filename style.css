@@ -723,3 +723,11 @@ button {
 .country-flag {
     font-size: 27px;
 }
+.country-icon {
+    width: 26px;
+    height: 18px;
+    object-fit: cover;
+    margin-right: 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+}
