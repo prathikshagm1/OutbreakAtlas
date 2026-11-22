@@ -48,7 +48,7 @@ fetch(apiURL)
                             })
                             : "Not available"
                     }</p>
-                    <p>${(report.Summary || report.Overview || "No summary available.")
+                    <p>${String(report.Summary || report.Overview || "No summary available.")
                         .replace(/<a\b[^>]*>(.*?)<\/a>/gi, "$1")}</p>
                     <button class="read-report-btn" type="button">
                         Read Official Report
