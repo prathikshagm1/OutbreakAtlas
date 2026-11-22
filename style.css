@@ -613,3 +613,25 @@ button {
 #clearCountryFilter:active {
     transform: scale(0.97);
 }
+.read-report-btn {
+    background: transparent;
+    color: #45d6c8;
+    border: 1px solid #45d6c8;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.read-report-btn:hover {
+    background: #45d6c8;
+    color: #171824;
+    box-shadow: 0 4px 14px rgba(69, 214, 200, 0.25);
+    transform: translateY(-2px);
+}
+
+.read-report-btn:active {
+    transform: scale(0.97);
+}
